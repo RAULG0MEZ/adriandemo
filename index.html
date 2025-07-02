@@ -1,23 +1,18 @@
-<!-- ⭐️ TESTIMONIAL MARQUEE CON TITULAR META‑STYLE (v3) ⭐️ -->
+<!-- ⭐️ TESTIMONIAL MARQUEE META-STYLE (v6) — triple‑row, seamless, hover‑pause ⭐️ -->
 <div class="reviews-wrapper">
-  <!-- Encabezado -->
   <div class="reviews-header">
     <h2><span class="count">5,911</span> CUSTOMER REVIEWS</h2>
     <div class="rating">★★★★★ <span>4.9&nbsp;/&nbsp;5</span></div>
   </div>
 
-  <!-- Marquee de tres filas -->
   <div class="review-marquee">
-    <!-- ROW 1 -->
-    <div class="marquee-row row1"><div class="marquee-track" data-src="row1"></div></div>
-    <!-- ROW 2 -->
-    <div class="marquee-row row2"><div class="marquee-track" data-src="row2"></div></div>
-    <!-- ROW 3 -->
-    <div class="marquee-row row3"><div class="marquee-track" data-src="row3"></div></div>
+    <div class="marquee-row row1"><div class="marquee-track" data-tpl="row1"></div></div>
+    <div class="marquee-row row2"><div class="marquee-track" data-tpl="row2"></div></div>
+    <div class="marquee-row row3"><div class="marquee-track" data-tpl="row3"></div></div>
   </div>
 </div>
 
-<!-- TARJETAS BASE (invisibles) -->
+<!-- Templates con 5 reseñas cada una -->
 <template id="row1">
   <div class="card"><h4>Carlos V.</h4><div class="stars">★★★★★</div><p>Este método cambió mi negocio por completo. 100% recomendado.</p></div>
   <div class="card"><h4>Kayleigh</h4><div class="stars">★★★★★</div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
@@ -40,28 +35,39 @@
   <div class="card"><h4>Valerie B.</h4><div class="stars">★★★★★</div><p>Pasos accionables que atraen clientes.</p></div>
 </template>
 
-<!-- JS: duplica hasta que la pista sea > 2× ancho de viewport -->
 <script>
+function buildTracks(){
   document.querySelectorAll('.marquee-track').forEach(track=>{
-    const srcId=track.dataset.src;
-    const tpl=document.getElementById(srcId);
+    const tpl=document.getElementById(track.dataset.tpl);
     if(!tpl) return;
-    // Agrega instancias hasta cubrir 2× viewport
-    while(track.offsetWidth < window.innerWidth*2){
+    track.innerHTML=''; // limpia
+    // Clona hasta que el ancho de la pista supere 2× viewport (para evitar cortes)
+    while(track.scrollWidth < window.innerWidth*2){
       track.appendChild(tpl.content.cloneNode(true));
     }
   });
+}
+
+buildTracks();
+window.addEventListener('resize',buildTracks);
+
+// Hover pause/resume
+document.querySelectorAll('.marquee-row').forEach(row=>{
+  const track=row.querySelector('.marquee-track');
+  row.addEventListener('mouseenter',()=>track.style.animationPlayState='paused');
+  row.addEventListener('mouseleave',()=>track.style.animationPlayState='running');
+});
 </script>
 
-<!-- CSS -->
 <style>
 :root{
   --bg:#0d0d0d; --card:#1c1c1c; --txt:#f5f5f5; --star:#ffc107;
-  --g1:#1877f2; --g2:#a137c4; --speed:25s;
+  --g1:#1877f2; --g2:#a137c4; --speed:24s;
 }
+*{box-sizing:border-box;margin:0;padding:0;}
 .reviews-wrapper{background:var(--bg);color:var(--txt);padding:3rem 1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
 .reviews-header{text-align:center;margin-bottom:2rem;}
-.reviews-header h2{font-size:clamp(1.8rem,6vw,3rem);font-weight:800;margin:0;}
+.reviews-header h2{font-size:clamp(1.9rem,6vw,3rem);font-weight:800;margin:0;}
 .count{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;color:transparent;}
 .rating{margin-top:.3rem;font-size:1rem;color:var(--star);font-weight:700;}
 .rating span{color:var(--txt);}
@@ -72,18 +78,19 @@
 .row2 .marquee-track{animation:scroll-right calc(var(--speed)+3s) linear infinite;}
 .row3 .marquee-track{animation:scroll-left calc(var(--speed)+6s) linear infinite;}
 
-.card{background:var(--card);color:var(--txt);flex:0 0 260px;padding:1rem;border-radius:10px;box-shadow:0 0 6px rgba(0,0,0,.5);} 
+.card{background:var(--card);color:var(--txt);flex:0 0 260px;padding:1rem;border-radius:10px;box-shadow:0 0 6px rgba(0,0,0,.5);transition:transform .25s ease;}
+.card:hover{transform:scale(1.12);} /* hover */
 .card h4{margin:0 0 .3rem;font-size:.95rem;font-weight:700;background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;color:transparent;}
 .stars{color:var(--star);font-size:.85rem;margin-bottom:.35rem;}
-.card p{font-size:.9rem;line-height:1.35;}
+.card p{font-size:.9rem;line-height:1.35;white-space:normal;}
 
-@keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-100%);} }
-@keyframes scroll-right{from{transform:translateX(-100%);}to{transform:translateX(0);} }
+@keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);} }
+@keyframes scroll-right{0%{transform:translateX(-50%);}100%{transform:translateX(0);} }
 
-/* Mobile: mostrar solo una fila y tarjetas full‑width */
+/* Mobile */
 @media(max-width:768px){
   .row2,.row3{display:none;}
-  .card{flex:0 0 90vw;max-width:90vw;}
+  .card{flex:0 0 88vw;max-width:88vw;}
   .marquee-track{gap:.75rem;}
 }
 </style>
