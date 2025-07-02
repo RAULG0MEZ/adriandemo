@@ -1,4 +1,4 @@
-<!-- ⭐️ TESTIMONIAL MARQUEE CON TITULAR META-STYLE ⭐️ -->
+<!-- ⭐️ TESTIMONIAL MARQUEE CON TITULAR META-STYLE (v2) ⭐️ -->
 <div class="reviews-wrapper">
   <!-- Encabezado -->
   <div class="reviews-header">
@@ -10,77 +10,82 @@
   <div class="review-marquee">
     <!-- ROW 1: left -->
     <div class="marquee-row row1"><div class="marquee-track">
-      <div class="card"><h4>Carlos V.</h4><div class="stars">★★★★★</div><p>“Este método cambió mi negocio por completo. 100% recomendado.”</p></div>
-      <div class="card"><h4>Kayleigh</h4><div class="stars">★★★★★</div><p>“Duplicamos vistas en la primera semana. ¡Una locura!”</p></div>
-      <div class="card"><h4>Cristin M.</h4><div class="stars">★★★★★</div><p>“Por fin una estrategia que funciona sin invertir en ads.”</p></div>
-      <div class="card"><h4>Elena</h4><div class="stars">★★★★★</div><p>“Contenido claro y accionable. Must-read para marcas.”</p></div>
-      <div class="card"><h4>Bens</h4><div class="stars">★★★★★</div><p>“ROI brutal. Pasamos de 0 a 78 citas mensuales.”</p></div>
-      <!-- loop -->
-      <div class="card"><h4>Carlos V.</h4><div class="stars">★★★★★</div><p>“Este método cambió mi negocio por completo. 100% recomendado.”</p></div>
-      <div class="card"><h4>Kayleigh</h4><div class="stars">★★★★★</div><p>“Duplicamos vistas en la primera semana. ¡Una locura!”</p></div>
-      <div class="card"><h4>Cristin M.</h4><div class="stars">★★★★★</div><p>“Por fin una estrategia que funciona sin invertir en ads.”</p></div>
-      <div class="card"><h4>Elena</h4><div class="stars">★★★★★</div><p>“Contenido claro y accionable. Must-read para marcas.”</p></div>
-      <div class="card"><h4>Bens</h4><div class="stars">★★★★★</div><p>“ROI brutal. Pasamos de 0 a 78 citas mensuales.”</p></div>
+      <!-- 10 cards (x2 for seamless loop) -->
+      <template id="row1-cards">
+        <div class="card"><h4>Carlos V.</h4><div class="stars">★★★★★</div><p>Este método cambió mi negocio por completo. 100% recomendado.</p></div>
+        <div class="card"><h4>Kayleigh</h4><div class="stars">★★★★★</div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
+        <div class="card"><h4>Cristin M.</h4><div class="stars">★★★★★</div><p>Por fin una estrategia que funciona sin invertir en ads.</p></div>
+        <div class="card"><h4>Elena</h4><div class="stars">★★★★★</div><p>Contenido claro y accionable. Must-read para marcas.</p></div>
+        <div class="card"><h4>Bens</h4><div class="stars">★★★★★</div><p>ROI brutal. Pasamos de 0 a 78 citas mensuales.</p></div>
+      </template>
     </div></div>
 
     <!-- ROW 2: right -->
     <div class="marquee-row row2"><div class="marquee-track">
-      <div class="card"><h4>Ciara N.</h4><div class="stars">★★★★★</div><p>“Plantillas simples que disparan el engagement.”</p></div>
-      <div class="card"><h4>Lukas S.</h4><div class="stars">★★★★★</div><p>“Fácil de leer y poner en práctica.”</p></div>
-      <div class="card"><h4>Kevin U.</h4><div class="stars">★★★★★</div><p>“Mi agencia ahora ofrece esta perspectiva a clientes.”</p></div>
-      <div class="card"><h4>Alan T.</h4><div class="stars">★★★★★</div><p>“Conocimiento que vale oro para marketers.”</p></div>
-      <div class="card"><h4>Dane C.</h4><div class="stars">★★★★★</div><p>“Ventas y marketing sin conferencias eternas.”</p></div>
-      <!-- repeat -->
-      <div class="card"><h4>Ciara N.</h4><div class="stars">★★★★★</div><p>“Plantillas simples que disparan el engagement.”</p></div>
-      <div class="card"><h4>Lukas S.</h4><div class="stars">★★★★★</div><p>“Fácil de leer y poner en práctica.”</p></div>
-      <div class="card"><h4>Kevin U.</h4><div class="stars">★★★★★</div><p>“Mi agencia ahora ofrece esta perspectiva a clientes.”</p></div>
-      <div class="card"><h4>Alan T.</h4><div class="stars">★★★★★</div><p>“Conocimiento que vale oro para marketers.”</p></div>
-      <div class="card"><h4>Dane C.</h4><div class="stars">★★★★★</div><p>“Ventas y marketing sin conferencias eternas.”</p></div>
+      <template id="row2-cards">
+        <div class="card"><h4>Ciara N.</h4><div class="stars">★★★★★</div><p>Plantillas simples que disparan el engagement.</p></div>
+        <div class="card"><h4>Lukas S.</h4><div class="stars">★★★★★</div><p>Fácil de leer y poner en práctica.</p></div>
+        <div class="card"><h4>Kevin U.</h4><div class="stars">★★★★★</div><p>Mi agencia ahora ofrece esta perspectiva a clientes.</p></div>
+        <div class="card"><h4>Alan T.</h4><div class="stars">★★★★★</div><p>Conocimiento que vale oro para marketers.</p></div>
+        <div class="card"><h4>Dane C.</h4><div class="stars">★★★★★</div><p>Ventas y marketing sin conferencias eternas.</p></div>
+      </template>
     </div></div>
 
     <!-- ROW 3: left -->
     <div class="marquee-row row3"><div class="marquee-track">
-      <div class="card"><h4>Tim</h4><div class="stars">★★★★★</div><p>“Nunca había visto marketing tan profundo.”</p></div>
-      <div class="card"><h4>Delilah</h4><div class="stars">★★★★★</div><p>“Del page 100 en adelante… ¡game changer!”</p></div>
-      <div class="card"><h4>CJay</h4><div class="stars">★★★★★</div><p>“Ejemplos claros y prácticos.”</p></div>
-      <div class="card"><h4>Erica</h4><div class="stars">★★★★★</div><p>“Lectura fácil con info poderosa.”</p></div>
-      <div class="card"><h4>Valerie B.</h4><div class="stars">★★★★★</div><p>“Pasos accionables que atraen clientes.”</p></div>
-      <!-- repeat -->
-      <div class="card"><h4>Tim</h4><div class="stars">★★★★★</div><p>“Nunca había visto marketing tan profundo.”</p></div>
-      <div class="card"><h4>Delilah</h4><div class="stars">★★★★★</div><p>“Del page 100 en adelante… ¡game changer!”</p></div>
-      <div class="card"><h4>CJay</h4><div class="stars">★★★★★</div><p>“Ejemplos claros y prácticos.”</p></div>
-      <div class="card"><h4>Erica</h4><div class="stars">★★★★★</div><p>“Lectura fácil con info poderosa.”</p></div>
-      <div class="card"><h4>Valerie B.</h4><div class="stars">★★★★★</div><p>“Pasos accionables que atraen clientes.”</p></div>
+      <template id="row3-cards">
+        <div class="card"><h4>Tim</h4><div class="stars">★★★★★</div><p>Nunca había visto marketing tan profundo.</p></div>
+        <div class="card"><h4>Delilah</h4><div class="stars">★★★★★</div><p>Del page 100 en adelante… ¡game changer!</p></div>
+        <div class="card"><h4>CJay</h4><div class="stars">★★★★★</div><p>Ejemplos claros y prácticos.</p></div>
+        <div class="card"><h4>Erica</h4><div class="stars">★★★★★</div><p>Lectura fácil con info poderosa.</p></div>
+        <div class="card"><h4>Valerie B.</h4><div class="stars">★★★★★</div><p>Pasos accionables que atraen clientes.</p></div>
+      </template>
     </div></div>
   </div>
 </div>
 
+<!-- JS para clonar templates y duplicar -->
+<script>
+  ['row1','row2','row3'].forEach(id=>{
+    const tpl=document.getElementById(id+'-cards');
+    if(!tpl) return;
+    const track=tpl.parentElement;
+    // Clonamos 2 veces para ancho>100%
+    for(let i=0;i<2;i++) track.appendChild(tpl.content.cloneNode(true));
+  });
+</script>
+
 <!-- CSS -->
 <style>
   :root {
-    --bg-dark: #0d0d0d;
-    --card-dark: #1c1c1c;
-    --star: #ffc107;
-    --txt: #f5f5f5;
-    --grad-start: #1877f2;
-    --grad-end: #a137c4;
+    --bg-dark:#0d0d0d; --card-dark:#1c1c1c; --star:#ffc107; --txt:#f5f5f5;
+    --grad-start:#1877f2; --grad-end:#a137c4; --speed:25s;
   }
-  .reviews-wrapper { background: var(--bg-dark); color: var(--txt); padding: 3rem 1rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-  .reviews-header { text-align: center; margin-bottom: 2.5rem; }
-  .reviews-header h2 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; line-height: 1.1; margin: 0; }
-  .count { font-size: 0.9em; background: linear-gradient(135deg,var(--grad-start),var(--grad-end)); -webkit-background-clip: text; color: transparent; }
-  .rating { margin-top: 0.5rem; font-size: 1rem; color: var(--star); font-weight: 700; }
-  .rating span { color: var(--txt); }
+  .reviews-wrapper{background:var(--bg-dark);color:var(--txt);padding:3rem 1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
+  .reviews-header{text-align:center;margin-bottom:2.5rem;}
+  .reviews-header h2{font-size:clamp(2rem,6vw,3rem);font-weight:800;line-height:1.1;margin:0;letter-spacing:.5px;}
+  .count{background:linear-gradient(135deg,var(--grad-start),var(--grad-end));-webkit-background-clip:text;color:transparent;}
+  .rating{margin-top:.4rem;font-size:1rem;color:var(--star);font-weight:700;}
+  .rating span{color:var(--txt);}
 
-  /* Marquee */
-  .review-marquee { display: flex; flex-direction: column; gap: 1rem; overflow: hidden; }
-  .marquee-row { overflow: hidden; }
-  .marquee-track { display: flex; gap: 1.2rem; white-space: nowrap; }
-  .card { background: var(--card-dark); color: var(--txt); min-width: 280px; max-width: 280px; padding: 1rem 1.25rem; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.5); }
-  .card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; background: linear-gradient(135deg,var(--grad-start),var(--grad-end)); -webkit-background-clip: text; color: transparent; }
-  .stars { color: var(--star); font-size: 0.9rem; margin-bottom: 0.4rem; }
-  .card p { font-size: 0.9rem; line-height: 1.35; }
+  /* Marquee layout */
+  .review-marquee{display:flex;flex-direction:column;gap:1rem;overflow:hidden;}
+  .marquee-row{overflow:hidden;}
+  .marquee-track{display:flex;gap:1rem;width:max-content;animation:scroll-l var(--speed) linear infinite;}
+  /* Direction overrides */
+  .row2 .marquee-track{animation-name:scroll-r;animation-duration:calc(var(--speed)+2s);} 
+  .row3 .marquee-track{animation-duration:calc(var(--speed)+4s);} 
+
+  /* Cards */
+  .card{background:var(--card-dark);color:var(--txt);flex:0 0 260px;padding:1rem;border-radius:10px;box-shadow:0 0 6px rgba(0,0,0,.5);overflow:hidden;}
+  .card h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));-webkit-background-clip:text;color:transparent;white-space:normal;}
+  .stars{color:var(--star);font-size:.85rem;margin-bottom:.3rem;}
+  .card p{font-size:.9rem;line-height:1.3;white-space:normal;}
 
   /* Animations */
-  @keyframes left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @keyframes right { from { transform
+  @keyframes scroll-l{from{transform:translateX(0);}to{transform:translateX(-50%);} }
+  @keyframes scroll-r{from{transform:translateX(-50%);}to{transform:translateX(0);} }
+
+  /* Mobile: solo una fila */
+  @media(max-width:768px){.row2,.row3{display:none;}.card{flex:0 0 280px;}}
+</style>
