@@ -13,7 +13,7 @@
   --star:#ffc107;
   --g1:#1877f2;
   --g2:#a137c4;
-  --speed:24s;
+  --speed:32s;                   /* ↓ más lento */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -50,20 +50,20 @@ body{
 .marquee-track{
   display:flex;
   gap:1rem;
-  min-width:200%;                /* duplica el ancho para bucle limpio */
+  min-width:200%;
   animation:scroll-l var(--speed) linear infinite;
 }
 
-/* Fila 2 corre al revés y un poco más lento */
+/* Fila 2: sentido contrario, +3 s, delay mitad del ciclo */
 .row2 .marquee-track{
   animation:scroll-l calc(var(--speed) + 3s) linear infinite reverse;
-  animation-delay:-12s;          /* arranca a medio ciclo */
+  animation-delay:-16s;
 }
 
-/* Fila 3 vuelve al sentido original, aún más lento */
+/* Fila 3: mismo sentido, +6 s, delay un cuarto */
 .row3 .marquee-track{
   animation:scroll-l calc(var(--speed) + 6s) linear infinite;
-  animation-delay:-6s;           /* arranca adelantada */
+  animation-delay:-8s;
 }
 
 /* ---------- Tarjetas ---------- */
@@ -94,10 +94,10 @@ body{
 /* ---------- Keyframes ---------- */
 @keyframes scroll-l{
   0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}   /* 50 % porque min-width:200 % */
+  100%{transform:translateX(-50%)}
 }
 
-/* ---------- Mobile: solo 1 fila ---------- */
+/* ---------- Mobile ---------- */
 @media(max-width:768px){
   .row2,.row3{display:none}
   .card{flex:0 0 86vw}
@@ -117,48 +117,48 @@ body{
 
   <!-- === Fila 1 === -->
   <div class="marquee-row row1"><div class="marquee-track">
-    <!-- 5 originales -->
+    <!-- originales -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/32.jpg"><div class="info"><span class="name">Carlos V.</span><span class="stars">★★★★★</span></div></div><p>Este método cambió mi negocio por completo. 100 % recomendado.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Kayleigh</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Elena</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Bens</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
-    <!-- 5 duplicados para lazo continuo -->
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Marisol R.</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Fernanda M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Sofía G.</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Andrés L.</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
+    <!-- duplicados -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/32.jpg"><div class="info"><span class="name">Carlos V.</span><span class="stars">★★★★★</span></div></div><p>Este método cambió mi negocio por completo. 100 % recomendado.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Kayleigh</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Elena</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Bens</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Marisol R.</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Fernanda M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Sofía G.</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Andrés L.</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
   </div></div>
 
   <!-- === Fila 2 === -->
   <div class="marquee-row row2"><div class="marquee-track">
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/22.jpg"><div class="info"><span class="name">Ciara N.</span><span class="stars">★★★★★</span></div></div><p>Plantillas simples que disparan el engagement.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/33.jpg"><div class="info"><span class="name">Lukas S.</span><span class="stars">★★★★★</span></div></div><p>Fácil de leer y aplicar.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/45.jpg"><div class="info"><span class="name">Kevin U.</span><span class="stars">★★★★★</span></div></div><p>Mi agencia lo usa con cada cliente.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/51.jpg"><div class="info"><span class="name">Alan T.</span><span class="stars">★★★★★</span></div></div><p>Conocimiento que vale oro.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/21.jpg"><div class="info"><span class="name">Dane C.</span><span class="stars">★★★★★</span></div></div><p>Ventas sin conferencias eternas.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/22.jpg"><div class="info"><span class="name">Karina C.</span><span class="stars">★★★★★</span></div></div><p>Plantillas simples que disparan el engagement.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/33.jpg"><div class="info"><span class="name">Diego H.</span><span class="stars">★★★★★</span></div></div><p>Fácil de leer y aplicar.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/45.jpg"><div class="info"><span class="name">Luis A.</span><span class="stars">★★★★★</span></div></div><p>Mi agencia lo usa con cada cliente.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/51.jpg"><div class="info"><span class="name">Ricardo M.</span><span class="stars">★★★★★</span></div></div><p>Conocimiento que vale oro.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/21.jpg"><div class="info"><span class="name">Javier P.</span><span class="stars">★★★★★</span></div></div><p>Ventas sin conferencias eternas.</p></div>
     <!-- duplicados -->
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/22.jpg"><div class="info"><span class="name">Ciara N.</span><span class="stars">★★★★★</span></div></div><p>Plantillas simples que disparan el engagement.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/33.jpg"><div class="info"><span class="name">Lukas S.</span><span class="stars">★★★★★</span></div></div><p>Fácil de leer y aplicar.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/45.jpg"><div class="info"><span class="name">Kevin U.</span><span class="stars">★★★★★</span></div></div><p>Mi agencia lo usa con cada cliente.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/51.jpg"><div class="info"><span class="name">Alan T.</span><span class="stars">★★★★★</span></div></div><p>Conocimiento que vale oro.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/21.jpg"><div class="info"><span class="name">Dane C.</span><span class="stars">★★★★★</span></div></div><p>Ventas sin conferencias eternas.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/22.jpg"><div class="info"><span class="name">Karina C.</span><span class="stars">★★★★★</span></div></div><p>Plantillas simples que disparan el engagement.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/33.jpg"><div class="info"><span class="name">Diego H.</span><span class="stars">★★★★★</span></div></div><p>Fácil de leer y aplicar.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/45.jpg"><div class="info"><span class="name">Luis A.</span><span class="stars">★★★★★</span></div></div><p>Mi agencia lo usa con cada cliente.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/51.jpg"><div class="info"><span class="name">Ricardo M.</span><span class="stars">★★★★★</span></div></div><p>Conocimiento que vale oro.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/21.jpg"><div class="info"><span class="name">Javier P.</span><span class="stars">★★★★★</span></div></div><p>Ventas sin conferencias eternas.</p></div>
   </div></div>
 
   <!-- === Fila 3 === -->
   <div class="marquee-row row3"><div class="marquee-track">
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Tim</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Delilah</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">CJay</span><span class="stars">★★★★★</span></div></div><p>Ejemplos claros y prácticos.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/45.jpg"><div class="info"><span class="name">Erica</span><span class="stars">★★★★★</span></div></div><p>Lectura fácil con info poderosa.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/24.jpg"><div class="info"><span class="name">Valerie B.</span><span class="stars">★★★★★</span></div></div><p>Pasos que atraen clientes.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Héctor</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Alejandra</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">Miguel</span><span class="stars">★★★★★</span></div></div><p>Ejemplos claros y prácticos.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/45.jpg"><div class="info"><span class="name">Patricia</span><span class="stars">★★★★★</span></div></div><p>Lectura fácil con info poderosa.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/24.jpg"><div class="info"><span class="name">Rosa B.</span><span class="stars">★★★★★</span></div></div><p>Pasos que atraen clientes.</p></div>
     <!-- duplicados -->
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Tim</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Delilah</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">CJay</span><span class="stars">★★★★★</span></div></div><p>Ejemplos claros y prácticos.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/45.jpg"><div class="info"><span class="name">Erica</span><span class="stars">★★★★★</span></div></div><p>Lectura fácil con info poderosa.</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/24.jpg"><div class="info"><span class="name">Valerie B.</span><span class="stars">★★★★★</span></div></div><p>Pasos que atraen clientes.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Héctor</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Alejandra</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">Miguel</span><span class="stars">★★★★★</span></div></div><p>Ejemplos claros y prácticos.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/45.jpg"><div class="info"><span class="name">Patricia</span><span class="stars">★★★★★</span></div></div><p>Lectura fácil con info poderosa.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/24.jpg"><div class="info"><span class="name">Rosa B.</span><span class="stars">★★★★★</span></div></div><p>Pasos que atraen clientes.</p></div>
   </div></div>
 
 </div>
