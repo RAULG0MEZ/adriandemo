@@ -2,47 +2,76 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Marquee 3 Filas – Meta-Style</title>
 <style>
+/* =======  Variables y reset  ======= */
 :root{
-  --bg:#0d0d0d;--card:#1c1c1c;--txt:#fafafa;--star:#ffc107;
-  --g1:#1877f2;--g2:#a137c4;--speed:24s;
+  --bg:#0d0d0d; --card:#1c1c1c; --txt:#fafafa; --star:#ffc107;
+  --g1:#1877f2; --g2:#a137c4; --speed:24s;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  overflow-x:hidden;
+}
 
-.reviews-header{padding:3rem 1rem;text-align:center;width:100%}
+/* =======  Encabezado  ======= */
+.reviews-header{
+  padding:3rem 1rem;text-align:center;width:100%;
+}
 .reviews-header h2{font-size:clamp(2rem,6vw,3rem);font-weight:800}
-.count{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;color:transparent}
-.rating{margin-top:.3rem;font-weight:700;color:var(--star)}
+.count{
+  background:linear-gradient(135deg,var(--g1),var(--g2));
+  -webkit-background-clip:text;color:transparent;
+}
+.rating{margin-top:.4rem;font-weight:700;color:var(--star)}
 
-.review-marquee{display:flex;flex-direction:column;gap:1.3rem;overflow:hidden;width:100%}
+/* =======  Layout del marquee  ======= */
+.review-marquee{
+  display:flex;flex-direction:column;gap:1.25rem;
+  width:100%;overflow:hidden;
+}
 .marquee-row{overflow:hidden;width:100%}
+
 .marquee-track{
   display:flex;gap:1rem;white-space:nowrap;
   animation:scroll-l var(--speed) linear infinite;
 }
-.row2 .marquee-track{animation:scroll-r calc(var(--speed)+3s) linear infinite}
-.row3 .marquee-track{animation:scroll-l calc(var(--speed)+6s) linear infinite}
-.marquee-track:hover{animation-play-state:paused}
+/* Fila 2 corre la MISMA animación en sentido contrario */
+.row2 .marquee-track{
+  animation-duration:calc(var(--speed)+3s);
+  animation-direction:reverse;
+}
+.row3 .marquee-track{
+  animation-duration:calc(var(--speed)+6s);
+}
 
+/* =======  Tarjetas  ======= */
 .card{
   background:var(--card);color:var(--txt);
-  flex:0 0 320px;min-height:220px;border-radius:10px;padding:1.2rem;
-  box-shadow:0 0 6px rgba(0,0,0,.55);transition:transform .3s;
+  flex:0 0 320px;min-height:220px;
+  border-radius:10px;padding:1.2rem;
+  box-shadow:0 0 6px rgba(0,0,0,.55);
+  transition:transform .3s;
 }
 .card:hover{transform:scale(1.06)}
 .card-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
 .pic{width:46px;height:46px;border-radius:50%;object-fit:cover}
 .info{display:flex;flex-direction:column}
-.name{font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;color:transparent}
+.name{
+  font-size:1rem;font-weight:700;
+  background:linear-gradient(135deg,var(--g1),var(--g2));
+  -webkit-background-clip:text;color:transparent;
+}
 .stars{font-size:.85rem;color:var(--star)}
 .card p{font-size:.92rem;line-height:1.35}
 
-@keyframes scroll-l{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes scroll-r{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+/* =======  Keyframes  (0 → -100 %)  ======= */
+@keyframes scroll-l{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
+/* =======  Mobile: solo 1 fila  ======= */
 @media(max-width:768px){
   .row2,.row3{display:none}
   .card{flex:0 0 86vw}
@@ -51,30 +80,32 @@ body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSys
 </head>
 <body>
 
+<!-- ---------- Encabezado ---------- -->
 <div class="reviews-header">
   <h2><span class="count">5,911</span> CUSTOMER REVIEWS</h2>
   <div class="rating">★★★★★ <span>4.9 / 5</span></div>
 </div>
 
+<!-- ---------- Marquee de 3 filas ---------- -->
 <div class="review-marquee">
 
-  <!-- ROW 1 – scroll-left -->
+  <!-- === Fila 1 (izquierda) === -->
   <div class="marquee-row row1"><div class="marquee-track">
     <!-- 5 originales -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/32.jpg"><div class="info"><span class="name">Carlos V.</span><span class="stars">★★★★★</span></div></div><p>Este método cambió mi negocio por completo. 100 % recomendado.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Kayleigh</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin ads.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Elena</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Bens</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
-    <!-- duplicados -->
+    <!-- 5 duplicados -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/32.jpg"><div class="info"><span class="name">Carlos V.</span><span class="stars">★★★★★</span></div></div><p>Este método cambió mi negocio por completo. 100 % recomendado.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Kayleigh</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin ads.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Cristin M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/12.jpg"><div class="info"><span class="name">Elena</span><span class="stars">★★★★★</span></div></div><p>Contenido claro y accionable. ¡Brutal!</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/56.jpg"><div class="info"><span class="name">Bens</span><span class="stars">★★★★★</span></div></div><p>ROI 10×. Pasamos de 0 a 78 citas.</p></div>
   </div></div>
 
-  <!-- ROW 2 – scroll-right -->
+  <!-- === Fila 2 (derecha) === -->
   <div class="marquee-row row2"><div class="marquee-track">
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/22.jpg"><div class="info"><span class="name">Ciara N.</span><span class="stars">★★★★★</span></div></div><p>Plantillas simples que disparan el engagement.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/33.jpg"><div class="info"><span class="name">Lukas S.</span><span class="stars">★★★★★</span></div></div><p>Fácil de leer y aplicar.</p></div>
@@ -89,7 +120,7 @@ body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSys
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/21.jpg"><div class="info"><span class="name">Dane C.</span><span class="stars">★★★★★</span></div></div><p>Ventas sin conferencias eternas.</p></div>
   </div></div>
 
-  <!-- ROW 3 – scroll-left -->
+  <!-- === Fila 3 (izquierda) === -->
   <div class="marquee-row row3"><div class="marquee-track">
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Tim</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Delilah</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
@@ -99,7 +130,7 @@ body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSys
     <!-- duplicados -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/75.jpg"><div class="info"><span class="name">Tim</span><span class="stars">★★★★★</span></div></div><p>Nunca había visto marketing tan profundo.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/38.jpg"><div class="info"><span class="name">Delilah</span><span class="stars">★★★★★</span></div></div><p>¡Game-changer total!</p></div>
-    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">CJay</span><span class="stars">★★★★★"></span></div></div><p>Ejemplos claros y prácticos.</p></div>
+    <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/88.jpg"><div class="info"><span class="name">CJay</span><span class="stars">★★★★★</span></div></div><p>Ejemplos claros y prácticos.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/45.jpg"><div class="info"><span class="name">Erica</span><span class="stars">★★★★★</span></div></div><p>Lectura fácil con info poderosa.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/24.jpg"><div class="info"><span class="name">Valerie B.</span><span class="stars">★★★★★</span></div></div><p>Pasos que atraen clientes.</p></div>
   </div></div>
