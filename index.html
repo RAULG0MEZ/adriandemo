@@ -4,382 +4,439 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adrián Pérez | Aumenta tus vistas en TikTok</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Font & Icons (Meta‑style system font stack) -->
+  <style>
+    @font-face {
+      font-family: "SFProDisplay";
+      src: local(".SFNSText-Regular"), local("SF Pro Text Regular"), local(".SFNSText-Regular"), local("Helvetica Neue"), local("Helvetica"), local("Arial"), sans-serif;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+
+  <!-- Facebook Pixel (PageView + Lead on submit) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1783453049234334');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1783453049234334&ev=PageView&noscript=1"/></noscript>
+
   <style>
     :root {
-      --mx-red: #e50914;
-      --mx-dark: #111111;
-      --mx-gray: #fafafa;
-      --mx-white: #ffffff;
-      --mx-blue: #0070f3;
+      /* Meta brand palette */
+      --meta-blue: #1877f2;
+      --meta-purple: #a137c4; /* IG blend */
+      --meta-gradient: linear-gradient(135deg, var(--meta-blue) 0%, var(--meta-purple) 100%);
+      --meta-gray-bg: #f0f2f5;
+      --meta-gray-card: #ffffff;
+      --meta-gray-text: #65676b;
+      --meta-dark: #050505;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: "SFProDisplay", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
+
     body {
-      background: var(--mx-gray);
-      color: var(--mx-dark);
-      line-height: 1.6;
+      background: var(--meta-gray-bg);
+      color: var(--meta-dark);
+      line-height: 1.5;
     }
+
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
+      width: 92%;
+      max-width: 1180px;
+      margin: 0 auto;
     }
+
     /* Hero */
     .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--mx-red) 0%, var(--mx-blue) 100%);
+      background: var(--meta-gradient);
+      color: #fff;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: var(--mx-white);
       padding: 4rem 0;
     }
+
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 700;
       margin-bottom: 1rem;
     }
+
     .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      margin-bottom: 2rem;
+      font-size: clamp(1rem, 2.3vw, 1.3rem);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      color: #f0f2f5;
     }
+
     .btn-primary {
-      background: var(--mx-white);
-      color: var(--mx-dark);
+      background: #fff;
+      color: var(--meta-blue);
       padding: 1rem 2rem;
       font-weight: 600;
       border: none;
-      border-radius: 8px;
-      transition: transform 0.2s;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
     }
+
     .btn-primary:hover {
-      transform: scale(1.05);
+      background: #e8e8e8;
+      transform: translateY(-2px);
       cursor: pointer;
     }
-    /* Section generic */
+
     section {
-      padding: 4rem 0;
+      padding: 4.5rem 0;
     }
+
     .section-title {
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: 1.9rem;
+      font-weight: 700;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
-    /* Acerca de */
+
+    /* About */
     .about {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
       gap: 2rem;
       align-items: center;
     }
-    .about img {
-      width: 100%;
-      border-radius: 12px;
+
+    .about p {
+      font-size: 1.05rem;
+      color: var(--meta-gray-text);
     }
-    /* Problema */
-    .problem {
-      background: var(--mx-white);
-    }
+
+    /* Problem */
     .problem .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
     }
+
     .card {
-      background: var(--mx-gray);
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background: var(--meta-gray-card);
+      padding: 1.4rem 1.6rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.95rem;
+      color: var(--meta-gray-text);
+      font-weight: 500;
     }
-    /* Método */
+
+    /* Method */
     .method {
-      background: var(--mx-dark);
-      color: var(--mx-white);
+      background: var(--meta-blue);
+      color: #fff;
     }
+
     .method-steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
     }
+
     .method-steps .step {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 1.6rem;
       border-radius: 12px;
     }
-    /* Casos de éxito */
+
+    .method-steps h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
     .testimonials {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
+
     .testimonial {
-      background: var(--mx-white);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      background: var(--meta-gray-card);
+      padding: 1.8rem 1.6rem;
+      border-radius: 10px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.05);
       position: relative;
+      font-size: 0.95rem;
+      color: var(--meta-gray-text);
     }
+
     .testimonial::before {
       content: "\201C";
-      font-size: 4rem;
-      color: var(--mx-red);
+      font-size: 3.5rem;
+      color: var(--meta-blue);
       position: absolute;
-      top: -20px;
-      left: 20px;
+      top: -18px;
+      left: 18px;
     }
-    /* Beneficios */
-    .benefits {
-      background: var(--mx-white);
-    }
+
+    /* Benefits */
     .benefits ul {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
     }
+
     .benefits li {
-      background: var(--mx-gray);
-      padding: 1.25rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
+      background: var(--meta-gray-card);
+      padding: 1.2rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 500;
+      color: var(--meta-gray-text);
     }
-    /* Pasos para unirte */
+
+    /* Join Steps */
     .join {
-      background: var(--mx-blue);
-      color: var(--mx-white);
+      background: var(--meta-gradient);
+      color: #fff;
     }
     .join-steps {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.4rem;
       justify-content: center;
     }
     .join-steps .step {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 1.8rem 1.6rem;
       border-radius: 12px;
-      flex: 1 1 260px;
+      flex: 1 1 250px;
     }
+
     /* CTA */
     .cta {
       text-align: center;
-      background: var(--mx-red);
-      color: var(--mx-white);
+      background: var(--meta-blue);
+      color: #fff;
     }
-    /* Formulario */
+
+    /* Form */
     .form-section {
-      background: var(--mx-white);
+      background: var(--meta-gray-card);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
     }
+
     form {
-      max-width: 600px;
+      max-width: 560px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
     input, textarea {
-      padding: 0.75rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ccd0d5;
+      border-radius: 6px;
+      font-size: 1rem;
     }
     textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 110px;
     }
+
     .success-message {
       display: none;
       text-align: center;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: var(--mx-blue);
+      color: var(--meta-blue);
       margin-top: 1rem;
     }
-    /* FAQ */
+
     details {
-      background: var(--mx-gray);
+      background: var(--meta-gray-card);
       padding: 1rem 1.25rem;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
+
     summary {
       font-weight: 600;
       cursor: pointer;
+      list-style: none;
     }
+
     footer {
-      background: var(--mx-dark);
-      color: var(--mx-white);
+      background: #fff;
+      color: var(--meta-gray-text);
       text-align: center;
       padding: 2rem 0;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="container">
-      <h1>¿Quieres Reventar tus Vistas en TikTok?</h1>
-      <p>Aprende el método probado con el que Adrián Pérez pasó de <strong>cero</strong> a <strong>millones</strong> de reproducciones y convirtió seguidores en clientes.</p>
-      <a href="#formulario" class="btn-primary">Sí, quiero más vistas</a>
+      <h1>Atrapa la Atención en TikTok</h1>
+      <p>Con el enfoque de <strong>Meta‑style performance</strong> de Adrián Pérez: contenido pensado para retener, convertir y crecer tu negocio sin ad‑spend.</p>
+      <a href="#formulario" class="btn-primary">Quiero más vistas</a>
     </div>
   </header>
 
   <main>
-    <!-- Acerca de Adrián -->
+    <!-- About -->
     <section class="container" id="acerca">
       <h2 class="section-title">¿Quién es Adrián Pérez?</h2>
       <div class="about">
-        <img src="https://source.unsplash.com/random/800x900?influencer" alt="Adrián Pérez" />
+        <img src="https://source.unsplash.com/random/900x900?creator" alt="Adrián Pérez" />
         <div>
-          <p>Adrián es un <strong>creador mexicano</strong> que entendió el algoritmo de TikTok antes de que se pusiera de moda. Mientras otros bailaban, él estudiaba patrones de viralidad. Hoy sus videos superan los <strong>80 millones de vistas</strong> y colabora con marcas que nunca imaginaron vender en TikTok.</p>
-          <p>Ahora abre un cupo limitado de <strong>asesorías 1‑a‑1</strong> para emprendedores y creadores que quieran adueñarse de su nicho con contenido estratégico, sin bailes ridículos y sin pagar anuncios.</p>
+          <p>Adrián es un <strong>creador mexicano</strong> que descifró los engranes del algoritmo antes que los gurús. De clips caseros a <strong>+80M de vistas</strong>: hoy enseña a marcas y freelancers a convertir scrolls en ventas.</p>
+          <p>Abre plazas limitadas para <strong>mentoría 1‑a‑1</strong>. Si quieres dominar TikTok con el look & feel que Meta diseñaría para ti, este es tu acceso.</p>
         </div>
       </div>
     </section>
 
-    <!-- El problema -->
+    <!-- Problem -->
     <section class="problem" id="problema">
       <div class="container">
-        <h2 class="section-title">¿Por qué no despegan tus videos?</h2>
+        <h2 class="section-title">¿Por qué tu contenido no despega?</h2>
         <div class="cards">
-          <div class="card"><strong>Algoritmo vs. ego:</strong> Subes contenido pensando en ti, no en la retención.</div>
-          <div class="card"><strong>Falta de storytelling:</strong> Empiezas sin gancho, el público se va en 3 segundos.</div>
-          <div class="card"><strong>CTA invisible:</strong> No conviertes vistas en ventas porque no pides la acción correcta.</div>
-          <div class="card"><strong>Inconsistencia:</strong> Publicas cuando se te ocurre; el algoritmo castiga la intermitencia.</div>
+          <div class="card"><strong>Hablas de ti,</strong> no del usuario. Retención por los suelos.</div>
+          <div class="card"><strong>Ganchos flojos:</strong> te abandonan en 3 segundos.</div>
+          <div class="card"><strong>CTA fantasma:</strong> vistas sin ventas.</div>
+          <div class="card"><strong>Inconsistencia:</strong> subes video cuando te acuerdas.</div>
         </div>
       </div>
     </section>
 
-    <!-- Método -->
+    <!-- Method -->
     <section class="method" id="metodo">
       <div class="container">
-        <h2 class="section-title">El Método <span style="color: var(--mx-red)">A.C.C.</span></h2>
+        <h2 class="section-title">Método A.C.C.</h2>
         <div class="method-steps">
-          <div class="step"><h3>Análisis</h3><p>Auditamos tu nicho, tu perfil y el contenido de tu competencia para encontrar oportunidades vírgenes.</p></div>
-          <div class="step"><h3>Contenido</h3><p>Diseñamos un calendario con ganchos, estructuras y llamadas a la acción que provocan que la gente se quede… y compre.</p></div>
-          <div class="step"><h3>Conversión</h3><p>Integramos funnels simples (DM & WhatsApp) para que conviertas la exposición en clientes reales.</p></div>
+          <div class="step"><h3>Análisis</h3><p>Auditamos tu nicho y destapamos huecos de mercado.</p></div>
+          <div class="step"><h3>Contenido</h3><p>Calendario con hooks, scripts y templates listos.</p></div>
+          <div class="step"><h3>Conversión</h3><p>Funnels DM & WhatsApp para pasar de vistas a tickets.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Casos de éxito -->
+    <!-- Testimonials -->
     <section class="container" id="casos">
-      <h2 class="section-title">Historias Reales</h2>
+      <h2 class="section-title">Resultados que Hablan</h2>
       <div class="testimonials">
-        <div class="testimonial"><p>“En un mes mi clínica pasó de 300 a 25,000 seguidores y agendamos 78 citas sin gastar un peso en ads.”<br><br><strong>— Dra. Martínez, Odontóloga</strong></p></div>
-        <div class="testimonial"><p>“Vendí mi curso de dibujo 50 veces la primera semana aplicando el guion de Adrián. Literal explotó mi bandeja.”<br><br><strong>— Carlos Gómez, Ilustrador</strong></p></div>
-        <div class="testimonial"><p>“Mis videos de recetas eran invisibles. Ahora un clip superó los 4.2M y colaboro con dos marcas de cocina.”<br><br><strong>— Ana Ruiz, Food Blogger</strong></p></div>
+        <div class="testimonial"><p>“Brincamos de 0 a 25k seguidores y 78 citas en 4 semanas.”<br><br><strong>— Dra. Martínez</strong></p></div>
+        <div class="testimonial"><p>“Mi curso voló 50 veces en 7 días. Técnicas simples, ROI brutal.”<br><br><strong>— Carlos Gómez</strong></p></div>
+        <div class="testimonial"><p>“4.2M vistas a la receta estrella. Dos marcas me patrocinaron.”<br><br><strong>— Ana Ruiz</strong></p></div>
       </div>
     </section>
 
-    <!-- Beneficios -->
+    <!-- Benefits -->
     <section class="benefits" id="beneficios">
       <div class="container">
-        <h2 class="section-title">Lo que te llevas</h2>
+        <h2 class="section-title">Te llevas</h2>
         <ul>
-          <li>Calendario de contenido por 90 días</li>
-          <li>Scripts de video listos para grabar</li>
-          <li>Cheat‑sheet de hooks persuasivos</li>
-          <li>Framework de edición rápida con tu celular</li>
-          <li>Plantilla de DM/WhatsApp para cerrar ventas</li>
-          <li>Acceso a grupo exclusivo durante 30 días</li>
+          <li>Calendario 90 días estilo Meta</li>
+          <li>Scripts de video plug‑and‑play</li>
+          <li>Cheat‑sheet de hooks virales</li>
+          <li>Framework edición mobile</li>
+          <li>Plantilla DM/WhatsApp venta</li>
+          <li>Acceso grupo privado 30 días</li>
         </ul>
       </div>
     </section>
 
-    <!-- Pasos para unirte -->
+    <!-- Join Steps -->
     <section class="join" id="pasos">
       <div class="container">
-        <h2 class="section-title">¿Cómo Apartar tu Lugar?</h2>
+        <h2 class="section-title">3 Pasos para Aplicar</h2>
         <div class="join-steps">
-          <div class="step"><h3>1. Reserva</h3><p>Llena el formulario y elige tu mejor WhatsApp.</p></div>
-          <div class="step"><h3>2. Diagnóstico</h3><p>Recibirás una llamada rápida para validar que encajamos.</p></div>
-          <div class="step"><h3>3. Transformación</h3><p>En la sesión nos metemos a tu cuenta y saldrás con tu plan de acción listo.</p></div>
+          <div class="step"><h3>1. Formulario</h3><p>Deja tus datos reales.</p></div>
+          <div class="step"><h3>2. Llamada</h3><p>Validamos fit y objetivos.</p></div>
+          <div class="step"><h3>3. Sesión</h3><p>Sales con plan accionable.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CTA grande -->
+    <!-- CTA -->
     <section class="cta" id="cta">
       <div class="container">
         <h2 class="section-title">¿Listo para ser tendencia?</h2>
-        <p>No dejes que tu competencia se robe la atención. Es hoy o nunca.</p>
-        <a href="#formulario" class="btn-primary">Quiero mi asesoría</a>
+        <p>El momento es ahora. Llena el formulario y nos vemos dentro.</p>
+        <a href="#formulario" class="btn-primary">Apartar sesión</a>
       </div>
     </section>
 
-    <!-- Formulario -->
+    <!-- Form -->
     <section class="form-section" id="formulario">
       <div class="container">
-        <h2 class="section-title">Aparta tu sesión</h2>
+        <h2 class="section-title">Agenda tu Diagnóstico Gratis</h2>
         <form id="leadForm">
-          <input type="text" name="nombre" placeholder="Tu nombre" required />
-          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <input type="text" name="nombre" placeholder="Nombre" required />
+          <input type="email" name="email" placeholder="Correo" required />
           <input type="tel" name="whatsapp" placeholder="WhatsApp" required />
-          <textarea name="objetivo" placeholder="¿Cuál es tu objetivo en TikTok?" required></textarea>
+          <textarea name="objetivo" placeholder="¿Cuál es tu meta en TikTok?" required></textarea>
           <button type="submit" class="btn-primary">Enviar</button>
         </form>
-        <div class="success-message" id="successMsg">¡Listo! Revisa tu WhatsApp, ahí te llegará la info 🤝</div>
+        <div class="success-message" id="successMsg">¡Listo! Revisa tu WhatsApp 🤝</div>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="container" id="faq">
-      <h2 class="section-title">Preguntas Frecuentes</h2>
-      <details>
-        <summary>¿Necesito miles de seguidores para aplicar?</summary>
-        <p>No. Muchos alumnos empiezan con cuentas en cero; el método funciona desde tu primer video.</p>
-      </details>
-      <details>
-        <summary>¿Cuánto tiempo tardaré en ver resultados?</summary>
-        <p>Depende de tu nicho y ejecución, pero la mayoría nota un salto de alcance en 7‑14 días.</p>
-      </details>
-      <details>
-        <summary>¿La asesoría es en vivo?</summary>
-        <p>Sí, es una sesión 1‑a‑1 por Zoom donde trabajamos tu cuenta en tiempo real.</p>
-      </details>
-      <details>
-        <summary>¿Incluye seguimiento?</summary>
-        <p>Tienes acceso a un grupo privado 30 días para resolver dudas y revisar métricas.</p>
-      </details>
+      <h2 class="section-title">FAQ</h2>
+      <details><summary>¿Necesito seguidores?</summary><p>No, funciona desde cero.</p></details>
+      <details><summary>¿Cuándo veo resultados?</summary><p>En 7‑14 días si sigues el plan.</p></details>
+      <details><summary>¿Incluye revisión?</summary><p>30 días de soporte grupo.</p></details>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      © 2025 Adrián Pérez · Todos los derechos reservados · Esta página no está afiliada a TikTok®.
+      © 2025 Adrián Pérez · No afiliado a TikTok® ni Meta™.
     </div>
   </footer>
 
   <script>
-    // Confetti + mensaje de éxito
+    // Confetti + Lead event
     document.getElementById("leadForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
-
-      // Simula envío (aquí integrarías tu backend o Zapier)
       setTimeout(() => {
         form.reset();
-        const msg = document.getElementById("successMsg");
-        msg.style.display = "block";
-        confetti({
-          particleCount: 200,
-          spread: 100,
-          origin: { y: 0.6 },
-        });
-      }, 500);
+        document.getElementById("successMsg").style.display = "block";
+        confetti({ particleCount: 160, spread: 80, origin: { y: 0.6 } });
+        fbq('track', 'Lead');
+      }, 400);
     });
   </script>
 </body>
