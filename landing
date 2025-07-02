@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adrián Pérez | Aumenta tus vistas en TikTok</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+  <style>
+    :root {
+      --mx-red: #e50914;
+      --mx-dark: #111111;
+      --mx-gray: #fafafa;
+      --mx-white: #ffffff;
+      --mx-blue: #0070f3;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: var(--mx-gray);
+      color: var(--mx-dark);
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--mx-red) 0%, var(--mx-blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--mx-white);
+      padding: 4rem 0;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background: var(--mx-white);
+      color: var(--mx-dark);
+      padding: 1rem 2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    /* Section generic */
+    section {
+      padding: 4rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    /* Acerca de */
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    /* Problema */
+    .problem {
+      background: var(--mx-white);
+    }
+    .problem .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--mx-gray);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Método */
+    .method {
+      background: var(--mx-dark);
+      color: var(--mx-white);
+    }
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .method-steps .step {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    /* Casos de éxito */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial {
+      background: var(--mx-white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    .testimonial::before {
+      content: "\201C";
+      font-size: 4rem;
+      color: var(--mx-red);
+      position: absolute;
+      top: -20px;
+      left: 20px;
+    }
+    /* Beneficios */
+    .benefits {
+      background: var(--mx-white);
+    }
+    .benefits ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .benefits li {
+      background: var(--mx-gray);
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    /* Pasos para unirte */
+    .join {
+      background: var(--mx-blue);
+      color: var(--mx-white);
+    }
+    .join-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .join-steps .step {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      flex: 1 1 260px;
+    }
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: var(--mx-red);
+      color: var(--mx-white);
+    }
+    /* Formulario */
+    .form-section {
+      background: var(--mx-white);
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .success-message {
+      display: none;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--mx-blue);
+      margin-top: 1rem;
+    }
+    /* FAQ */
+    details {
+      background: var(--mx-gray);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    footer {
+      background: var(--mx-dark);
+      color: var(--mx-white);
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>¿Quieres Reventar tus Vistas en TikTok?</h1>
+      <p>Aprende el método probado con el que Adrián Pérez pasó de <strong>cero</strong> a <strong>millones</strong> de reproducciones y convirtió seguidores en clientes.</p>
+      <a href="#formulario" class="btn-primary">Sí, quiero más vistas</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Acerca de Adrián -->
+    <section class="container" id="acerca">
+      <h2 class="section-title">¿Quién es Adrián Pérez?</h2>
+      <div class="about">
+        <img src="https://source.unsplash.com/random/800x900?influencer" alt="Adrián Pérez" />
+        <div>
+          <p>Adrián es un <strong>creador mexicano</strong> que entendió el algoritmo de TikTok antes de que se pusiera de moda. Mientras otros bailaban, él estudiaba patrones de viralidad. Hoy sus videos superan los <strong>80 millones de vistas</strong> y colabora con marcas que nunca imaginaron vender en TikTok.</p>
+          <p>Ahora abre un cupo limitado de <strong>asesorías 1‑a‑1</strong> para emprendedores y creadores que quieran adueñarse de su nicho con contenido estratégico, sin bailes ridículos y sin pagar anuncios.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- El problema -->
+    <section class="problem" id="problema">
+      <div class="container">
+        <h2 class="section-title">¿Por qué no despegan tus videos?</h2>
+        <div class="cards">
+          <div class="card"><strong>Algoritmo vs. ego:</strong> Subes contenido pensando en ti, no en la retención.</div>
+          <div class="card"><strong>Falta de storytelling:</strong> Empiezas sin gancho, el público se va en 3 segundos.</div>
+          <div class="card"><strong>CTA invisible:</strong> No conviertes vistas en ventas porque no pides la acción correcta.</div>
+          <div class="card"><strong>Inconsistencia:</strong> Publicas cuando se te ocurre; el algoritmo castiga la intermitencia.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Método -->
+    <section class="method" id="metodo">
+      <div class="container">
+        <h2 class="section-title">El Método <span style="color: var(--mx-red)">A.C.C.</span></h2>
+        <div class="method-steps">
+          <div class="step"><h3>Análisis</h3><p>Auditamos tu nicho, tu perfil y el contenido de tu competencia para encontrar oportunidades vírgenes.</p></div>
+          <div class="step"><h3>Contenido</h3><p>Diseñamos un calendario con ganchos, estructuras y llamadas a la acción que provocan que la gente se quede… y compre.</p></div>
+          <div class="step"><h3>Conversión</h3><p>Integramos funnels simples (DM & WhatsApp) para que conviertas la exposición en clientes reales.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Casos de éxito -->
+    <section class="container" id="casos">
+      <h2 class="section-title">Historias Reales</h2>
+      <div class="testimonials">
+        <div class="testimonial"><p>“En un mes mi clínica pasó de 300 a 25,000 seguidores y agendamos 78 citas sin gastar un peso en ads.”<br><br><strong>— Dra. Martínez, Odontóloga</strong></p></div>
+        <div class="testimonial"><p>“Vendí mi curso de dibujo 50 veces la primera semana aplicando el guion de Adrián. Literal explotó mi bandeja.”<br><br><strong>— Carlos Gómez, Ilustrador</strong></p></div>
+        <div class="testimonial"><p>“Mis videos de recetas eran invisibles. Ahora un clip superó los 4.2M y colaboro con dos marcas de cocina.”<br><br><strong>— Ana Ruiz, Food Blogger</strong></p></div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="benefits" id="beneficios">
+      <div class="container">
+        <h2 class="section-title">Lo que te llevas</h2>
+        <ul>
+          <li>Calendario de contenido por 90 días</li>
+          <li>Scripts de video listos para grabar</li>
+          <li>Cheat‑sheet de hooks persuasivos</li>
+          <li>Framework de edición rápida con tu celular</li>
+          <li>Plantilla de DM/WhatsApp para cerrar ventas</li>
+          <li>Acceso a grupo exclusivo durante 30 días</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pasos para unirte -->
+    <section class="join" id="pasos">
+      <div class="container">
+        <h2 class="section-title">¿Cómo Apartar tu Lugar?</h2>
+        <div class="join-steps">
+          <div class="step"><h3>1. Reserva</h3><p>Llena el formulario y elige tu mejor WhatsApp.</p></div>
+          <div class="step"><h3>2. Diagnóstico</h3><p>Recibirás una llamada rápida para validar que encajamos.</p></div>
+          <div class="step"><h3>3. Transformación</h3><p>En la sesión nos metemos a tu cuenta y saldrás con tu plan de acción listo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA grande -->
+    <section class="cta" id="cta">
+      <div class="container">
+        <h2 class="section-title">¿Listo para ser tendencia?</h2>
+        <p>No dejes que tu competencia se robe la atención. Es hoy o nunca.</p>
+        <a href="#formulario" class="btn-primary">Quiero mi asesoría</a>
+      </div>
+    </section>
+
+    <!-- Formulario -->
+    <section class="form-section" id="formulario">
+      <div class="container">
+        <h2 class="section-title">Aparta tu sesión</h2>
+        <form id="leadForm">
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp" required />
+          <textarea name="objetivo" placeholder="¿Cuál es tu objetivo en TikTok?" required></textarea>
+          <button type="submit" class="btn-primary">Enviar</button>
+        </form>
+        <div class="success-message" id="successMsg">¡Listo! Revisa tu WhatsApp, ahí te llegará la info 🤝</div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container" id="faq">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <details>
+        <summary>¿Necesito miles de seguidores para aplicar?</summary>
+        <p>No. Muchos alumnos empiezan con cuentas en cero; el método funciona desde tu primer video.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo tardaré en ver resultados?</summary>
+        <p>Depende de tu nicho y ejecución, pero la mayoría nota un salto de alcance en 7‑14 días.</p>
+      </details>
+      <details>
+        <summary>¿La asesoría es en vivo?</summary>
+        <p>Sí, es una sesión 1‑a‑1 por Zoom donde trabajamos tu cuenta en tiempo real.</p>
+      </details>
+      <details>
+        <summary>¿Incluye seguimiento?</summary>
+        <p>Tienes acceso a un grupo privado 30 días para resolver dudas y revisar métricas.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 Adrián Pérez · Todos los derechos reservados · Esta página no está afiliada a TikTok®.
+    </div>
+  </footer>
+
+  <script>
+    // Confetti + mensaje de éxito
+    document.getElementById("leadForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+
+      // Simula envío (aquí integrarías tu backend o Zapier)
+      setTimeout(() => {
+        form.reset();
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          origin: { y: 0.6 },
+        });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
