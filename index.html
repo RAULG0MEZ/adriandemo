@@ -13,7 +13,7 @@
   --star:#ffc107;
   --g1:#1877f2;
   --g2:#a137c4;
-  --speed:32s;                   /* ↓ más lento */
+  --speed:60s;                   /* ← mucho más lento */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -54,16 +54,16 @@ body{
   animation:scroll-l var(--speed) linear infinite;
 }
 
-/* Fila 2: sentido contrario, +3 s, delay mitad del ciclo */
+/* Fila 2: sentido contrario, +6 s, arranca a mitad de su ciclo */
 .row2 .marquee-track{
-  animation:scroll-l calc(var(--speed) + 3s) linear infinite reverse;
-  animation-delay:-16s;
+  animation:scroll-l calc(var(--speed) + 6s) linear infinite reverse;
+  animation-delay:-33s;          /* mitad de 66 s ≈ 33 s */
 }
 
-/* Fila 3: mismo sentido, +6 s, delay un cuarto */
+/* Fila 3: mismo sentido, +12 s, arranca adelantada un cuarto */
 .row3 .marquee-track{
-  animation:scroll-l calc(var(--speed) + 6s) linear infinite;
-  animation-delay:-8s;
+  animation:scroll-l calc(var(--speed) + 12s) linear infinite;
+  animation-delay:-18s;          /* un cuarto de 72 s ≈ 18 s */
 }
 
 /* ---------- Tarjetas ---------- */
