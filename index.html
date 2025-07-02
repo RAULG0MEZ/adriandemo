@@ -1,133 +1,95 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>¡Impulsa Tu Negocio!</title>
-  <meta name="description" content="Landing page moderna y optimizada para captar leads, inspirada en el look de Meta.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1877f2;
-      --secondary: #f0f2f5;
-      --accent: #42b72a;
-      --text: #1c1e21;
-      --border-radius: 12px;
-      --shadow: 0 2px 24px rgba(0,0,0,0.08);
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--secondary);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 420px;
-      margin: 48px auto;
-      background: #fff;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 40px 32px 32px 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo {
-      width: 60px;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-weight: 700;
-      text-align: center;
-    }
-    p {
-      text-align: center;
-      margin-bottom: 24px;
-      color: #4b4f56;
-    }
-    form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    input, button {
-      font-size: 1rem;
-      padding: 14px;
-      border-radius: var(--border-radius);
-      border: 1px solid #ddd;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    input:focus {
-      border-color: var(--primary);
-    }
-    button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    button:hover {
-      background: #145db2;
-    }
-    .success-message {
-      display: none;
-      background: var(--accent);
-      color: #fff;
-      border-radius: var(--border-radius);
-      padding: 12px;
-      text-align: center;
-      margin-top: 16px;
-    }
-    .footer {
-      margin-top: 32px;
-      text-align: center;
-      color: #aaa;
-      font-size: 0.95rem;
-    }
-    @media (max-width: 500px) {
-      .container {
-        margin: 0;
-        border-radius: 0;
-        min-height: 100vh;
-        box-shadow: none;
-        padding: 36px 12px 24px 12px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Logo Meta">
-    <h1>¡Impulsa Tu Negocio!</h1>
-    <p>Descubre cómo llevar tu marca al siguiente nivel con estrategias digitales comprobadas. Deja tus datos y recibe una consultoría gratuita.</p>
-    <form id="leadForm" autocomplete="off">
-      <input type="text" name="nombre" placeholder="Tu Nombre" required>
-      <input type="email" name="email" placeholder="Correo Electrónico" required>
-      <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
-      <button type="submit">¡Quiero crecer!</button>
-    </form>
-    <div class="success-message" id="successMsg">
-      ¡Gracias! Pronto nos pondremos en contacto contigo 🚀
+<!-- Marquee de 3 filas infinito con estilo Meta -->
+<div class="marquee-container">
+  <div class="marquee-row row1">
+    <div class="marquee-content">
+      <span>“Este método cambió mi negocio”</span>
+      <span>“Duplicamos nuestras vistas en 7 días”</span>
+      <span>“ROI de 10x sin ads”</span>
+      <span>“Comunidades enganchadas al 100%”</span>
+      <!-- repetir para loop -->
+      <span>“Este método cambió mi negocio”</span>
+      <span>“Duplicamos nuestras vistas en 7 días”</span>
+      <span>“ROI de 10x sin ads”</span>
+      <span>“Comunidades enganchadas al 100%”</span>
     </div>
   </div>
-  <div class="footer">
-    © 2025 Tu Marca. Sitio optimizado para la conversión de leads.
+  <div class="marquee-row row2">
+    <div class="marquee-content">
+      <span>“Estrategia probada por expertos”</span>
+      <span>“Plan de acción inmediato”</span>
+      <span>“Sin templates genéricos”</span>
+      <span>“Soporte 24/7”</span>
+      <!-- repetir para loop -->
+      <span>“Estrategia probada por expertos”</span>
+      <span>“Plan de acción inmediato”</span>
+      <span>“Sin templates genéricos”</span>
+      <span>“Soporte 24/7”</span>
+    </div>
   </div>
-  <script>
-    document.getElementById('leadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-      // Aquí puedes agregar tu integración con un servicio de leads (ejemplo: Zapier, Google Sheets, Mailchimp, etc.)
-    });
-  </script>
-</body>
-</html>
+  <div class="marquee-row row3">
+    <div class="marquee-content">
+      <span>“Contenido viral garantizado”</span>
+      <span>“Crecimiento orgánico real”</span>
+      <span>“Optimización en tiempo real”</span>
+      <span>“Clientes listos para comprar”</span>
+      <!-- repetir para loop -->
+      <span>“Contenido viral garantizado”</span>
+      <span>“Crecimiento orgánico real”</span>
+      <span>“Optimización en tiempo real”</span>
+      <span>“Clientes listos para comprar”</span>
+    </div>
+  </div>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+  :root {
+    --meta-blue: #1877f2;
+    --meta-purple: #a137c4;
+    --accent-orange: #ff4d00;
+    --text-light: #fff;
+    --bg-light: #f0f2f5;
+  }
+  .marquee-container {
+    background: var(--bg-light);
+    overflow: hidden;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .marquee-row {
+    overflow: hidden;
+  }
+  .marquee-content {
+    display: inline-flex;
+    gap: 2rem;
+    white-space: nowrap;
+  }
+  .marquee-content span {
+    background: var(--meta-blue);
+    background: linear-gradient(135deg, var(--meta-blue) 0%, var(--meta-purple) 100%);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  @keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scroll-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .row1 .marquee-content {
+    animation: scroll-left 20s linear infinite;
+  }
+  .row2 .marquee-content {
+    animation: scroll-right 22s linear infinite;
+  }
+  .row3 .marquee-content {
+    animation: scroll-left 24s linear infinite;
+  }
+</style>
