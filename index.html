@@ -1,106 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrián Pérez | Aumenta tus vistas en TikTok</title>
-
-  <!-- Meta‑style Font Stack -->
-  <style>
-    @font-face {
-      font-family: "SFProDisplay";
-      src: local(".SFNSText-Regular"), local("SF Pro Text Regular"), local("Helvetica Neue"), local("Helvetica"), local("Arial"), sans-serif;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
-
-  <!-- Facebook Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0].parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1783453049234334');fbq('track','PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1783453049234334&ev=PageView&noscript=1"/></noscript>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¡Impulsa Tu Negocio!</title>
+  <meta name="description" content="Landing page moderna y optimizada para captar leads, inspirada en el look de Meta.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --meta-blue: #1877f2;
-      --meta-purple: #a137c4;
-      --meta-gradient: linear-gradient(135deg, var(--meta-blue) 0%, var(--meta-purple) 100%);
-      --meta-gray-bg: #f0f2f5;
-      --meta-gray-card: #ffffff;
-      --meta-gray-text: #65676b;
-      --meta-dark: #050505;
-      --accent-orange: #ff4d00;
+      --primary: #1877f2;
+      --secondary: #f0f2f5;
+      --accent: #42b72a;
+      --text: #1c1e21;
+      --border-radius: 12px;
+      --shadow: 0 2px 24px rgba(0,0,0,0.08);
     }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"SFProDisplay", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    body { background:var(--meta-gray-bg); color:var(--meta-dark); line-height:1.5; }
-    a { text-decoration:none; color:inherit; }
-    img { max-width:100%; display:block; }
-    .container { width:92%; max-width:1180px; margin:0 auto; }
-
-    /* Hero */
-    .hero { background:var(--meta-gradient); color:#fff; min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:4rem 0; }
-    .hero h1 { font-size:clamp(2.4rem,5vw,3.5rem); font-weight:700; margin-bottom:1rem; }
-    .hero p { font-size:clamp(1rem,2.3vw,1.3rem); max-width:680px; margin:0 auto 2rem; color:#e4e6eb; }
-    .btn-primary { background:#fff; color:var(--meta-blue); padding:1rem 2rem; font-weight:600; border:none; border-radius:6px; transition:background .2s,transform .15s; }
-    .btn-primary:hover { background:#e8e8e8; transform:translateY(-2px); }
-
-    /* Sections */
-    section { padding:4.5rem 0; }
-    .section-title { font-size:1.9rem; font-weight:700; text-align:center; margin-bottom:2.5rem; }
-
-    /* Ticker */
-    .ticker { overflow:hidden; background:var(--meta-gray-bg); }
-    .ticker-row { overflow:hidden; }
-    .ticker-content { display:flex; gap:0.75rem; }
-    .tag { background:var(--accent-orange); color:#fff; padding:.55rem 1.1rem; font-size:.95rem; font-weight:700; text-transform:uppercase; border-radius:4px; white-space:nowrap; }
-
-    @keyframes scroll-left { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-    @keyframes scroll-right { 0% { transform:translateX(-50%); } 100% { transform:translateX(0); } }
-
-    .row1 .ticker-content { animation:scroll-left 20s linear infinite; }
-    .row2 .ticker-content { animation:scroll-right 22s linear infinite; }
-    .row3 .ticker-content { animation:scroll-left 24s linear infinite; }
-
-    /* Other sections unchanged... */
-    .about { display:grid; grid-template-columns:repeat(auto-fit,minmax(288px,1fr)); gap:2rem; align-items:center; }
-    .about p { color:var(--meta-gray-text); }
-    .problem .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
-    .card { background:var(--meta-gray-card); padding:1.4rem; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.05); color:var(--meta-gray-text); font-weight:500; }
-    .method { background:var(--meta-blue); color:#fff; }
-    .method-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-    .method-steps .step { background:rgba(255,255,255,0.08); backdrop-filter:blur(4px); padding:1.8rem; border-radius:12px; }
-    .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
-    .testimonial { background:var(--meta-gray-card); padding:1.8rem; border-radius:10px; box-shadow:0 0 3px rgba(0,0,0,0.05); position:relative; }
-    .benefits ul { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; list-style:none; }
-    .benefits li { background:var(--meta-gray-card); padding:1.2rem; border-radius:10px; font-weight:500; }
-    .join { background:var(--meta-gradient); color:#fff; }
-    .join-steps { display:flex; flex-wrap:wrap; gap:1.4rem; justify-content:center; }
-    .join-steps .step { background:rgba(255,255,255,0.1); padding:1.8rem; border-radius:12px; flex:1 1 250px; }
-    .cta { text-align:center; background:var(--meta-blue); color:#fff; }
-    .form-section { background:var(--meta-gray-card); box-shadow:0 2px 4px rgba(0,0,0,0.06); }
-    form{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;}
-    input,textarea{padding:.8rem 1rem;border:1px solid #ccd0d5;border-radius:6px;font-size:1rem;}
-    textarea{min-height:110px;resize:vertical;}
-    .success-message{display:none;text-align:center;color:var(--meta-blue);font-weight:600;margin-top:1rem;}
-    details{background:var(--meta-gray-card);padding:1rem;border-radius:8px;margin-bottom:.8rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);}summary{font-weight:600;cursor:pointer;}
-    footer{background:#fff;color:var(--meta-gray-text);text-align:center;padding:2rem;font-size:.85rem;}
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--secondary);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 420px;
+      margin: 48px auto;
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 40px 32px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      width: 60px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #4b4f56;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    input, button {
+      font-size: 1rem;
+      padding: 14px;
+      border-radius: var(--border-radius);
+      border: 1px solid #ddd;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: var(--primary);
+    }
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #145db2;
+    }
+    .success-message {
+      display: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--border-radius);
+      padding: 12px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 500px) {
+      .container {
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+        box-shadow: none;
+        padding: 36px 12px 24px 12px;
+      }
+    }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Atrapa la Atención en TikTok</h1>
-      <p>Con el enfoque de <strong>Meta‑style performance</strong> de Adrián Pérez: contenido pensado para retener, convertir y crecer tu negocio sin ad‑spend.</p>
-      <a href="#formulario" class="btn-primary">Quiero más vistas</a>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Logo Meta">
+    <h1>¡Impulsa Tu Negocio!</h1>
+    <p>Descubre cómo llevar tu marca al siguiente nivel con estrategias digitales comprobadas. Deja tus datos y recibe una consultoría gratuita.</p>
+    <form id="leadForm" autocomplete="off">
+      <input type="text" name="nombre" placeholder="Tu Nombre" required>
+      <input type="email" name="email" placeholder="Correo Electrónico" required>
+      <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+      <button type="submit">¡Quiero crecer!</button>
+    </form>
+    <div class="success-message" id="successMsg">
+      ¡Gracias! Pronto nos pondremos en contacto contigo 🚀
     </div>
-  </header>
-
-  <!-- Ticker Section -->
-  <section class="ticker">
-    <div class="ticker-row row1">
-      <div class="ticker-content">
-        <span class="tag">TikTok Growth</span><span class="tag">Engagement Alto</span><span class="tag">Retención</span><span class="tag">Conversión</span><span class="tag">Contenido Viral</span><span class="tag">Estrategia</span><span class="tag">Trending</span><span class="tag">Views</span><span class="tag">Followers</span><span class="tag">Meta‑Style</span>
-        <!-- Repeat for seamless loop -->
-        <span class="tag">TikTok Growth</span><span class="tag">Engagement Alto</span><span class="tag">Retención</span><span class="tag">Conversión</span><span class="tag">Contenido Viral</span><span class="tag">Estrategia</span><span class="tag">Trending</span
-}]}
+  </div>
+  <div class="footer">
+    © 2025 Tu Marca. Sitio optimizado para la conversión de leads.
+  </div>
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      // Aquí puedes agregar tu integración con un servicio de leads (ejemplo: Zapier, Google Sheets, Mailchimp, etc.)
+    });
+  </script>
+</body>
+</html>
