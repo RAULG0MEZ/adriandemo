@@ -13,7 +13,7 @@
   --star:#ffc107;
   --g1:#1877f2;
   --g2:#a137c4;
-  --speed:60s;                   /* ← mucho más lento */
+  --speed:60s;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -43,9 +43,12 @@ body{
   flex-direction:column;
   gap:1.25rem;
   width:100%;
-  overflow:hidden;
+  overflow:hidden;               /* mantiene el “borde” general */
 }
-.marquee-row{overflow:hidden;width:100%}
+.marquee-row{
+  /* quitamos overflow:hidden para que las tarjetas escaladas no se corten */
+  width:100%;
+}
 
 .marquee-track{
   display:flex;
@@ -54,16 +57,15 @@ body{
   animation:scroll-l var(--speed) linear infinite;
 }
 
-/* Fila 2: sentido contrario, +6 s, arranca a mitad de su ciclo */
+/* Fila 2 */
 .row2 .marquee-track{
   animation:scroll-l calc(var(--speed) + 6s) linear infinite reverse;
-  animation-delay:-33s;          /* mitad de 66 s ≈ 33 s */
+  animation-delay:-33s;          /* mitad de 66 s */
 }
-
-/* Fila 3: mismo sentido, +12 s, arranca adelantada un cuarto */
+/* Fila 3 */
 .row3 .marquee-track{
   animation:scroll-l calc(var(--speed) + 12s) linear infinite;
-  animation-delay:-18s;          /* un cuarto de 72 s ≈ 18 s */
+  animation-delay:-18s;          /* un cuarto de 72 s */
 }
 
 /* ---------- Tarjetas ---------- */
@@ -76,8 +78,12 @@ body{
   padding:1.2rem;
   box-shadow:0 0 6px rgba(0,0,0,.55);
   transition:transform .3s;
+  position:relative;             /* para que z-index funcione */
 }
-.card:hover{transform:scale(1.06)}
+.card:hover{
+  transform:scale(1.06);
+  z-index:10;                    /* sobresale sin ser cortada */
+}
 .card-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
 .pic{width:46px;height:46px;border-radius:50%;object-fit:cover}
 .info{display:flex;flex-direction:column}
@@ -117,7 +123,6 @@ body{
 
   <!-- === Fila 1 === -->
   <div class="marquee-row row1"><div class="marquee-track">
-    <!-- originales -->
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/men/32.jpg"><div class="info"><span class="name">Carlos V.</span><span class="stars">★★★★★</span></div></div><p>Este método cambió mi negocio por completo. 100 % recomendado.</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/44.jpg"><div class="info"><span class="name">Marisol R.</span><span class="stars">★★★★★</span></div></div><p>Duplicamos vistas en la primera semana. ¡Una locura!</p></div>
     <div class="card"><div class="card-head"><img class="pic" src="https://randomuser.me/api/portraits/women/65.jpg"><div class="info"><span class="name">Fernanda M.</span><span class="stars">★★★★★</span></div></div><p>Por fin una estrategia que funciona sin Ads.</p></div>
